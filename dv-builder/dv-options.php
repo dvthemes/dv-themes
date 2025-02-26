@@ -1,10 +1,6 @@
 <?php 
-require get_template_directory() . '/dv-builder/functions.php';
-require get_template_directory() . '/dv-builder/theme-options/index.php';
-require get_template_directory() . '/dv-builder/theme-options/customizer/customizer.php';
-require get_template_directory() . '/dv-builder/blocks/custom-block/custom-blocks.php';
-require get_template_directory() . '/dv-builder/blocks/add-custom-attribute/attributes-for-blocks.php';
-
+require get_template_directory() . '/dv-builder/theme-options/index.php';require get_template_directory() . '/dv-builder/blocks/custom-block/custom-blocks.php';require get_template_directory() . '/dv-builder/blocks/add-custom-attribute/attributes-for-blocks.php';
+//require get_template_directory() . '/dv-builder/theme-options/customizer/customizer.php';//require get_template_directory() . '/dv-builder/functions.php';
 //require get_template_directory() . '/dv-builder/meta-options/index.php';
 //require get_template_directory() . '/dv-builder/import/import.php';
 //require get_template_directory() . '/dv-builder/getwid/index.php';
@@ -20,7 +16,7 @@ function wpdoc_add_custom_body_open_code() {
 add_action('after_body', 'dv_body_style');
 function dv_body_style(){
 }*/
-
+/*=== REGISTER CATEGORY FOR PATTERN ===*/add_action( 'init', 'register_pattern_categories' );function register_pattern_categories() {	register_block_pattern_category( 'themeslug/fancybox', array( 		'label'       => __( 'Fancy Box', 'themeslug' ),		'description' => __( 'Fancy Box', 'themeslug' )	) );}
 
 /*=== ADMIN EDITOR STYLING ===*/
 function block_editor_full_width() {

@@ -127,4 +127,4 @@ div#dv_banner_02 .wp-block-getwid-media-text-slider-slide__content { min-height:
 .srv_01 { position: relative; overflow: hidden; -webkit-transition: .4s cubic-bezier(.12,0,.39,0); transition: .4s cubic-bezier(.12,0,.39,0); }
 .srv_01:hover { background:#2d2d2d; }
 .srv_01:hover i, .srv_01:hover h3, .srv_01:hover p { color:#d8d8d4; }
-.srv_01:hover .dv_sv_head { left:-30%; }
+.srv_01:hover .dv_sv_head { left:-30%; }.is-desktop-preview > header { background: #0000002e; }
