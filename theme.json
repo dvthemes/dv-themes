@@ -142,32 +142,17 @@
 			],
 			"fontFamilies": [
 				{
-					"name": "Manrope",
-					"slug": "manrope",
-					"fontFamily": "Manrope, sans-serif",
+					"name": "Poppins",
+					"slug": "poppins",
+					"fontFamily": "Poppins, sans-serif",
 					"fontFace": [
 						{
 							"src": [
-								"file:./assets/fonts/manrope/Manrope-VariableFont_wght.woff2"
+								"file:./assets/fonts/poppins/poppins.woff2"
 							],
 							"fontWeight": "200 800",
 							"fontStyle": "normal",
-							"fontFamily": "Manrope"
-						}
-					]
-				},
-				{
-					"name": "Fira Code",
-					"slug": "fira-code",
-					"fontFamily": "\"Fira Code\", monospace",
-					"fontFace": [
-						{
-							"src": [
-								"file:./assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2"
-							],
-							"fontWeight": "300 700",
-							"fontStyle": "normal",
-							"fontFamily": "\"Fira Code\""
+							"fontFamily": "Poppins"
 						}
 					]
 				}
@@ -188,7 +173,7 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "var:preset|font-family|manrope",
+			"fontFamily": "var:preset|font-family|poppins",
 			"fontSize": "var:preset|font-size|large",
 			"fontWeight": "300",
 			"letterSpacing": "0px",
@@ -231,7 +216,7 @@
 			},
 			"core/code": {
 				"typography": {
-					"fontFamily": "var:preset|font-family|fira-code",
+					"fontFamily": "var:preset|font-family|poppins",
 					"fontSize": "var:preset|font-size|medium",
 					"fontWeight": "300"
 				},
