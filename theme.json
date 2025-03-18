@@ -49,37 +49,37 @@
 			"spacingSizes": [
 				{
 					"name": "Tiny",
-					"size": "10px",
+					"size": "clamp(10px, 5vw, 0.3rem)",
 					"slug": "20"
 				},
 				{
 					"name": "X-Small",
-					"size": "20px",
+					"size": "clamp(15px, 5vw, 0.44rem)",
 					"slug": "30"
 				},
 				{
 					"name": "Small",
-					"size": "30px",
+					"size": "clamp(18px, 5vw, 1rem)",
 					"slug": "40"
 				},
 				{
 					"name": "Regular",
-					"size": "clamp(30px, 5vw, 50px)",
+					"size": "clamp(20px, 5vw, 1.5rem)",
 					"slug": "50"
 				},
 				{
 					"name": "Large",
-					"size": "clamp(30px, 7vw, 70px)",
+					"size": "clamp(25px, 7vw, 2.25rem)",
 					"slug": "60"
 				},
 				{
 					"name": "X-Large",
-					"size": "clamp(50px, 7vw, 90px)",
+					"size": "clamp(30px, 7vw, 3.38rem)",
 					"slug": "70"
 				},
 				{
 					"name": "XX-Large",
-					"size": "clamp(70px, 10vw, 140px)",
+					"size": "clamp(30px, 10vw, 5.06rem)",
 					"slug": "80"
 				}
 			],
@@ -613,26 +613,22 @@
 			},
 			"h2": {
 				"typography": {
-					"fontSize": "var:preset|font-size|x-large",
-					
+					"fontSize": "var:preset|font-size|x-large"
 				}
 			},
 			"h3": {
 				"typography": {
-					"fontSize": "var:preset|font-size|large",
-					
+					"fontSize": "var:preset|font-size|large"
 				}
 			},
 			"h4": {
 				"typography": {
-					"fontSize": "var:preset|font-size|medium",
-					
+					"fontSize": "var:preset|font-size|medium"
 				}
 			},
 			"h5": {
 				"typography": {
-					"fontSize": "var:preset|font-size|small",
-					
+					"fontSize": "var:preset|font-size|small"
 				}
 			},
 			"h6": {
@@ -703,8 +699,8 @@
 		},
 		{
 			"name": "under-construction",
-			"title": "Under Construction",
-			"postTypes": ["page"]
+			"postTypes": ["page"],
+			"title": "Under Construction"
 		}
 	]
 }

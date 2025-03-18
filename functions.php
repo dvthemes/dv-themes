@@ -13,8 +13,9 @@ if ( ! function_exists( 'twentytwentyfive_enqueue_styles' ) ) :
 		/*=== UNDER CONSTRUCTION PAGE CSS ===*/
 		if ( get_page_template_slug() === 'under-construction' ) {
 			wp_enqueue_style( 'under-construction-style', get_parent_theme_file_uri() . '/dv-builder/maintenance-mode/uc_style.css', array(), '1.0', 'all' );
-			wp_register_script('under-construction-scripts', get_parent_theme_file_uri() . '/dv-builder/maintenance-mode/uc_script.js', array('jquery'), '1.0', true);
-		}		wp_register_script('plugin-scripts', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0', true);
+			wp_enqueue_script('under-construction-scripts', get_parent_theme_file_uri() . '/dv-builder/maintenance-mode/uc_script.js', array(), '1.0', 'all');
+		}	
+		wp_enqueue_script('plugin-scripts', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0', true);
 	}endif;
 add_action( 'wp_enqueue_scripts', 'dv_themes_enqueue_styles' );
 

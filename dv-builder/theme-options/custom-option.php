@@ -42,7 +42,6 @@
 
 			<ul class="tabTrgr">
 				<li> <a href="javascript:;" data-tab="#general_settings" class="active">General Settings</a> </li>
-				<li> <a href="javascript:;" data-tab="#social_settings">Social Links</a></li>
 				<li> <a href="javascript:;" data-tab="#preloader_settings">Preloader Settings</a> </li>
 			</ul>
 
@@ -51,100 +50,8 @@
 				<h2>General Settings</h2>
 				<table>
 					<tbody>
-						<tr class="img">
-							<th>Logo:</th>
-							<td>
-								<img class="header_logo" src="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>" height="50" width="50"/>
-								<input class="header_logo_url" type="hidden" name="sample_theme_options[logourl]" value="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>">
-								<a href="#" class="header_logo_upload btn">Upload</a>
-							</td>
-						</tr>
-						<!-- <tr class="img">
-							<tzh>FavIcon Image:</th>
-							<td>
-								<img class="fav_logo" src="<?php if(!empty($options['favIcon'])){ esc_attr_e( $options['favIcon'] ); } ?>" height="50" width="50"/>
-								<input class="fav_logo_url" type="hidden" name="sample_theme_options[favIcon]" value="<?php if(!empty($options['favIcon'])){ esc_attr_e( $options['favIcon'] ); } ?>">
-								<a href="#" class="fav_logo_upload btn">Upload</a>
-							</td>
-						</tr> -->
-						<tr class="img">
-    <th>FavIcon Image:</th>
-    <td>
-        <img class="fav_logo" src="<?php echo esc_url( get_site_icon_url( 50 ) ); ?>" height="50" width="50"/>
-        <input class="fav_logo_url" type="hidden" name="site_icon" value="<?php echo esc_attr( get_option( 'site_icon' ) ); ?>">
-        <a href="#" class="fav_logo_upload btn">Upload</a>
-    </td>
-</tr>
-
-						<tr>
-							<th>Site Title</th>
-							<td><input id="sample_theme_options[titleOpt]" type="text" name="sample_theme_options[titleOpt]" value="<?php if(!empty($options['titleOpt'])){ esc_attr_e( $options['titleOpt'] ); } ?>" /></td>
-						</tr>
-						<tr>
-						<tr>
-							<th>Tag Line</th>
-							<td><input id="sample_theme_options[tagline]" type="text" name="sample_theme_options[tagline]" value="<?php if(!empty($options['tagline'])){ esc_attr_e( $options['tagline'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Address</th>
-							<td><input id="sample_theme_options[addressOpt]" type="text" name="sample_theme_options[addressOpt]" value="<?php if(!empty($options['addressOpt'])){ esc_attr_e( $options['addressOpt'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Contact Phone</th>
-							<td><input id="sample_theme_options[phnOpt]" type="text" name="sample_theme_options[phnOpt]" value="<?php if(!empty($options['phnOpt'])){ esc_attr_e( $options['phnOpt'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Email Address</th>
-							<td><input id="sample_theme_options[emlOpt]" type="text" name="sample_theme_options[emlOpt]" value="<?php if(!empty($options['emlOpt'])){ esc_attr_e( $options['emlOpt'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Business Address</th>
-							<td><input id="sample_theme_options[businessOpt]" type="text" name="sample_theme_options[businessOpt]" value="<?php if(!empty($options['businessOpt'])){ esc_attr_e( $options['businessOpt'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Copyright</th>
-							<td><input id="sample_theme_options[cpyrt]" type="text" name="sample_theme_options[cpyrt]" value="<?php if(!empty($options['cpyrt'])){ esc_attr_e( $options['cpyrt'] ); } ?>" /></td>
-						</tr>
-					</tbody>
-				</table> 
-			</div>
-
-			<div id="social_settings" class="cstmTab">
-				<h2>Social Links</h2>
-				<table>
-					<tbody>
-						<tr>
-							<th>Facebook Link</th>
-							<td><input id="sample_theme_options[fbUrl]" type="text" name="sample_theme_options[fbUrl]" value="<?php if(!empty($options['fbUrl'])){ esc_attr_e( $options['fbUrl'] ); } ?>" /></td>
-						</tr> 
-						<tr>
-							<th>LinkedIn Link</th>
-							<td><input id="sample_theme_options[linkdUrl]" type="text" name="sample_theme_options[linkdUrl]" value="<?php if(!empty($options['linkdUrl'])){ esc_attr_e( $options['linkdUrl'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Instagram Link</th>
-							<td><input id="sample_theme_options[instUrl]" type="text" name="sample_theme_options[instUrl]" value="<?php if(!empty($options['instUrl'])){ esc_attr_e( $options['instUrl'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>X / Twitter Link</th>
-							<td><input id="sample_theme_options[xUrl]" type="text" name="sample_theme_options[xUrl]" value="<?php if(!empty($options['xUrl'])){ esc_attr_e( $options['xUrl'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Youtube Link</th>
-							<td><input id="sample_theme_options[youtubeUrl]" type="text" name="sample_theme_options[youtubeUrl]" value="<?php if(!empty($options['youtubeUrl'])){ esc_attr_e( $options['youtubeUrl'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Tiktok Link</th>
-							<td><input id="sample_theme_options[tiktokUrl]" type="text" name="sample_theme_options[tiktokUrl]" value="<?php if(!empty($options['tiktokUrl'])){ esc_attr_e( $options['tiktokUrl'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>WhatsApp Link</th>
-							<td><input id="sample_theme_options[whtsAppUrl]" type="text" name="sample_theme_options[whtsAppUrl]" value="<?php if(!empty($options['whtsAppUrl'])){ esc_attr_e( $options['whtsAppUrl'] ); } ?>" /></td>
-						</tr>
-						<tr>
-							<th>Pinterest Link</th>
-							<td><input id="sample_theme_options[pintUrl]" type="text" name="sample_theme_options[pintUrl]" value="<?php if(!empty($options['pintUrl'])){ esc_attr_e( $options['pintUrl'] ); } ?>" /></td>
-						</tr>
+						<tr class="img">							<th>Logo:</th>							<td>								<img class="header_logo" src="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>" height="50" width="50"/>								<input class="header_logo_url" type="hidden" name="sample_theme_options[logourl]" value="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>">								<a href="#" class="header_logo_upload btn">Upload</a>							</td>						</tr>
+						<tr class="img">							<th>FavIcon Image:</th>							<td>								<img class="fav_logo" src="<?php echo esc_url( get_site_icon_url( 50 ) ); ?>" height="50" width="50"/>								<input class="fav_logo_url" type="hidden" name="site_icon" value="<?php echo esc_attr( get_option( 'site_icon' ) ); ?>">								<a href="#" class="fav_logo_upload btn">Upload</a>							</td>						</tr>						<tr>							<th>Site Title</th>							<td><input id="sample_theme_options[titleOpt]" type="text" name="sample_theme_options[titleOpt]" value="<?php if(!empty($options['titleOpt'])){ esc_attr_e( $options['titleOpt'] ); } ?>" /></td>						</tr>						<tr>						<tr>							<th>Tag Line</th>							<td><input id="sample_theme_options[tagline]" type="text" name="sample_theme_options[tagline]" value="<?php if(!empty($options['tagline'])){ esc_attr_e( $options['tagline'] ); } ?>" /></td>						</tr>												<tr>							<th>Edit Header</th>							<td>								<a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?postType=wp_template_part&postId=dv-themes-child%2F%2Fheader&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit the Header</a> </td>							</td>						</tr>												<tr>							<th>Edit Footer</th>							<td>								<a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?postType=wp_template_part&postId=dv-themes-child%2F%2Ffooter&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit the Footer</a> </td>							</td>						</tr>
 					</tbody>
 				</table> 
 			</div>

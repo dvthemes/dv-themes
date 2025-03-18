@@ -31,13 +31,13 @@ function import_data() {
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;"> src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;"> src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
@@ -107,13 +107,13 @@ function dv_options() {
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
@@ -166,13 +166,13 @@ function pre_built_websites() {
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
@@ -306,13 +306,13 @@ function maintenance_mode() {
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
@@ -357,9 +357,8 @@ function maintenance_mode() {
 							</td>
 						</tr>
 						<tr>
-							<th style="width:20%;">Edit Maintenance Pge</th>
-							<td>
-								<a href="<?php echo get_site_url(); ?>/wp-admin/post.php?post=1523&action=edit" target="blank" class="btn" style="margin: 0;">Click here.</a> </td>
+							<th style="width:20%;">Edit Maintenance Page</th>
+							<td>								<a href="<?php echo get_site_url(); ?>/wp-admin/edit.php?s=Under+Construction&post_status=all&post_type=page&action=-1&m=0&paged=1&action2=-1" target="blank" class="btn" style="margin: 0;">Click here.</a> </td>
 							</td>
 						</tr>
 						<!--<tr>
@@ -503,13 +502,13 @@ function manual_support() {
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
@@ -520,14 +519,14 @@ function manual_support() {
 			<div class="card-content cnt_clrd">
 				<div class="card-box">
 					<div class="support-item" style="border-right: 1px solid rgba(48, 64, 80, .1);">
-						<img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/yes-icon.svg" />
+						<img src="https://dvthemes.com/assets/theme-images/icons/yes-icon.svg" />
 						<h5>Item support <span class="include">includes</span>: </h5>
 						<p>Responding to questions or problems regarding the item and its features.</p>
 						<p>Fixing bugs and reported issues.</p>
 						<p>Providing updates to ensure compatibility with new WordPress versions.</p>
 					</div>
 					<div class="support-item">
-						<img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/no-icon.svg" />
+						<img src="https://dvthemes.com/assets/theme-images/icons/no-icon.svg" />
 						<h5>Item support does <span class="include">not include</span>: </h5>
 						<p>Customization and installation services.</p>
 						<p>Support for third party software and plugins.</p>
@@ -605,13 +604,13 @@ function license_key() {
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
