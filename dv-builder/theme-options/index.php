@@ -225,75 +225,8 @@ if (is_wp_error($built_response)) {
 <?php } 
 
 function theme_r_options() {
-	require get_template_directory() . '/dv-builder/theme-options/custom-option.php'; ?>
-	
-
-<!--
-<script>
-
-	jQuery(document).ready(function($) {
-		
-		<?php if($preLoader == 1){ ?>
-			jQuery('#preLoders > div[data-attr="<?php echo $loaderCode; ?>"]').addClass('selected');
-		<?php } ?>
-		/*jQuery('#preLoders .load_atr[data-attr="<?php echo $loaderCode; ?>"]').addClass('selected');*/
-		jQuery('#preLoders .load_atr').click(function(){
-			var src = jQuery(this).data('attr');
-			jQuery('#preLoders .load_atr').removeClass('selected');
-			jQuery(this).addClass('selected');
-			jQuery('#loaderCode').val(src);
-		});
-		
-		jQuery('.switch-options label.cb-enable').click(function(){
-			jQuery(this).closest('.switch-options').find('label').removeClass('selected');
-			jQuery(this).addClass('selected'); 
-			jQuery(this).closest('.switch-options').find('.checkbox').val(1);
-		});
-		jQuery('.switch-options label.cb-disable').click(function(){
-			jQuery(this).closest('.switch-options').find('label').removeClass('selected');
-			jQuery(this).addClass('selected'); 
-			jQuery(this).closest('.switch-options').find('.checkbox').val(0);
-		});
-
-		jQuery('.tabPanel .cstmTab:first').show();
-		
-    });
-	( function() { 'use strict';
-	let images = document.querySelectorAll('img[data-src]');
-
-	document.addEventListener('DOMContentLoaded', onReady);
-	function onReady() {
-	// Show above-the-fold images first
-	showImagesOnView();
-
-	// scroll listener
-	window.addEventListener( 'scroll', showImagesOnView, false );
-	}
-
-	// Show the image if reached on viewport
-	function showImagesOnView( e ) {
-	for( let i of images ) {
-	if( i.getAttribute('src') ) { continue; } // SKIP if already displayed
-
-	// Compare the position of image and scroll
-	let bounding = i.getBoundingClientRect();
-	let isOnView = bounding.top >= 0 &&
-	bounding.left >= 0 &&
-	bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-	bounding.right <= (window.innerWidth || document.documentElement.clientWidth);
-
-	if( isOnView ) {
-	i.setAttribute( 'src', i.dataset.src );
-	if( i.getAttribute('data-srcset') ) {
-	i.setAttribute( 'srcset', i.dataset.srcset );
-	}
-	}
-	}
-	}
-
-	})();
-</script>-->
-<?php } 
+	require get_template_directory() . '/dv-builder/theme-options/custom-option.php';	
+} 
 
 
 function maintenance_mode() {

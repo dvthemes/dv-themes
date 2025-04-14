@@ -7,13 +7,13 @@
 		<div class="logo"></div>
 		<div class="menu-wrapper">
 			<ul class="dashboard-menu">
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Import Data</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/dv-builder/assets/images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header> 
@@ -43,6 +43,7 @@
 			<ul class="tabTrgr">
 				<li> <a href="javascript:;" data-tab="#general_settings" class="active">General Settings</a> </li>
 				<li> <a href="javascript:;" data-tab="#preloader_settings">Preloader Settings</a> </li>
+				<li> <a href="javascript:;" data-tab="#seo_settings">Seo Settings</a> </li>
 			</ul>
 
 			<div id="general_settings" class="cstmTab">
@@ -50,8 +51,18 @@
 				<h2>General Settings</h2>
 				<table>
 					<tbody>
-						<tr class="img">							<th>Logo:</th>							<td>								<img class="header_logo" src="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>" height="50" width="50"/>								<input class="header_logo_url" type="hidden" name="sample_theme_options[logourl]" value="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>">								<a href="#" class="header_logo_upload btn">Upload</a>							</td>						</tr>
-						<tr class="img">							<th>FavIcon Image:</th>							<td>								<img class="fav_logo" src="<?php echo esc_url( get_site_icon_url( 50 ) ); ?>" height="50" width="50"/>								<input class="fav_logo_url" type="hidden" name="site_icon" value="<?php echo esc_attr( get_option( 'site_icon' ) ); ?>">								<a href="#" class="fav_logo_upload btn">Upload</a>							</td>						</tr>						<tr>							<th>Site Title</th>							<td><input id="sample_theme_options[titleOpt]" type="text" name="sample_theme_options[titleOpt]" value="<?php if(!empty($options['titleOpt'])){ esc_attr_e( $options['titleOpt'] ); } ?>" /></td>						</tr>						<tr>						<tr>							<th>Tag Line</th>							<td><input id="sample_theme_options[tagline]" type="text" name="sample_theme_options[tagline]" value="<?php if(!empty($options['tagline'])){ esc_attr_e( $options['tagline'] ); } ?>" /></td>						</tr>												<tr>							<th>Edit Header</th>							<td>								<a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?postType=wp_template_part&postId=dv-themes-child%2F%2Fheader&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit the Header</a> </td>							</td>						</tr>												<tr>							<th>Edit Footer</th>							<td>								<a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?postType=wp_template_part&postId=dv-themes-child%2F%2Ffooter&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit the Footer</a> </td>							</td>						</tr>
+						<tr class="img"><th>Logo:</th>
+						<td><img class="header_logo" src="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>" height="50" width="50"/>
+						<input class="header_logo_url" type="hidden" name="sample_theme_options[logourl]" value="<?php if(!empty($options['logourl'])){ esc_attr_e( $options['logourl'] ); } ?>">
+						<a href="#" class="header_logo_upload btn">Upload</a></td></tr>
+						<tr class="img"><th>FavIcon Image:</th>
+						<td><img class="fav_logo" src="<?php echo esc_url( get_site_icon_url( 50 ) ); ?>" height="50" width="50"/><input class="fav_logo_url" type="hidden" name="site_icon" value="<?php echo esc_attr( get_option( 'site_icon' ) ); ?>"><a href="#" class="fav_logo_upload btn">Upload</a>
+						</td></tr>
+						<tr><th>Site Title</th><td><input id="sample_theme_options[titleOpt]" type="text" name="sample_theme_options[titleOpt]" value="<?php if(!empty($options['titleOpt'])){ esc_attr_e( $options['titleOpt'] ); } ?>" /></td></tr>
+						<tr>							<th>Tag Line</th>							<td><input id="sample_theme_options[tagline]" type="text" name="sample_theme_options[tagline]" value="<?php if(!empty($options['tagline'])){ esc_attr_e( $options['tagline'] ); } ?>" /></td>						</tr>												
+						<tr><th>Theme Options</th><td><a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?path=%2Fwp_global_styles&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit theme Options</a> </td></td></tr>
+						<tr><th>Edit Header</th><td><a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?postType=wp_template_part&postId=dv-themes-child%2F%2Fheader&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit the Header</a> </td></td></tr>
+						<tr>							<th>Edit Footer</th>							<td>								<a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?postType=wp_template_part&postId=dv-themes-child%2F%2Ffooter&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit the Footer</a> </td>							</td>						</tr>
 					</tbody>
 				</table> 
 			</div>
@@ -119,6 +130,15 @@
 					</tbody>
 				</table> 
 				
+			</div>
+			
+			<div id="seo_settings" class="cstmTab">
+				<h2>SEO Settings</h2>
+				<table>
+					<tbody>
+						<tr><th>Edit Robots.txt</th><td><a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?path=%2Fwp_global_styles&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit theme Options</a> </td></td></tr>
+					</tbody>
+				</table> 
 			</div>
 
 		</div>

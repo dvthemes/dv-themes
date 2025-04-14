@@ -148,6 +148,6 @@ function create_dvuser_role() {    if (!get_role('dvuser')) {        $role = add
 function hide_plugins_menu_for_dvuser() {    $current_user = wp_get_current_user();    if (in_array('dvuser', (array)$current_user->roles)) {        remove_menu_page('plugins.php');     }}add_action('admin_menu', 'hide_plugins_menu_for_dvuser', 999);
 function redirect_dvuser_from_plugins_page() {    $current_user = wp_get_current_user();    if (in_array('dvuser', (array)$current_user->roles)) {        if (strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false) { wp_redirect(admin_url()); exit; }    }}add_action('admin_init', 'redirect_dvuser_from_plugins_page');
 
- 
+
 
 

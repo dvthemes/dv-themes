@@ -96,7 +96,7 @@ ul.dashboard-menu { display: flex; justify-content: space-between; margin: 0; }
 
 .theme_option .thm_box { width: 100%; background: #FCFCFC; box-shadow: 0 0 1px #0000; border: 1px solid #e7ebf2; border-radius: 5px; }
 .theme_option .thm_box > h1 { padding: 20px; margin: 0; }
-.theme_option .thm_box .img img { width: auto; height: auto; min-width: 150px; max-width: 100%; max-height: 85px; }
+.theme_option .thm_box .img img { width: auto; height: auto; max-width: 100%; max-height: 85px; }
 #general_settings { display:block; }
 
 #skins .items { flex-wrap: wrap; position: relative; display: flex; }

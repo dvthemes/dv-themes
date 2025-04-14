@@ -1,2 +1,0 @@
-<?php function remove_font_awesome() {    wp_deregister_style('font-awesome');}add_action('wp_enqueue_scripts', 'remove_font_awesome', 90);
-function remove_slick_theme_style() {	wp_deregister_style('animate');}add_action('wp_enqueue_scripts', 'remove_slick_theme_style', 100);function remove_fancybox_css() {    wp_dequeue_style('mp-fancybox-css');    wp_deregister_style('mp-fancybox-css');}add_action('wp_enqueue_scripts', 'remove_fancybox_css', 9999);

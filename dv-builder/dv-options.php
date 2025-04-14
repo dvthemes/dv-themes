@@ -2,6 +2,7 @@
 require get_template_directory() . '/dv-builder/theme-options/index.php';
 require get_template_directory() . '/dv-builder/blocks/add-custom-attribute/attributes-for-blocks.php';
 
+
 /*=== ALLOW TO UPLOAD SVG FILES ===*/
 function add_file_types_to_uploads($file_types){
 $new_filetypes = array();
