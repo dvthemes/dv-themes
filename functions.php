@@ -89,40 +89,6 @@ if ( ! function_exists( 'twentytwentyfive_format_binding' ) ) :
 	}
 endif;
 
-function enqueue_admin_ticket_script() {
-    wp_enqueue_script('admin-ticket-script', get_template_directory_uri() . '/js/admin-ticket.js', ['jquery'], null, true);
-    wp_localize_script('admin-ticket-script', 'ajax_object', ['ajaxurl' => admin_url('admin-ajax.php')]);
-}
-add_action('admin_enqueue_scripts', 'enqueue_admin_ticket_script');
-
-
-add_action('wp_ajax_create_ticket', 'create_ticket_external_db_handler');
-
-function create_ticket_external_db_handler() {
-    global $wpdb;
-    if (!isset($_POST['ticket_description']) || empty(trim($_POST['ticket_description']))) {
-        wp_send_json_error(['message' => 'Ticket description is required.']);
-    }
-
-    $user_id = get_current_user_id();
-    $email = wp_get_current_user()->user_email;
-    $description = sanitize_textarea_field($_POST['ticket_description']);
-
-$external_db = new wpdb('techihtk_dv_themes_dashboard_management', 'dv_themes_dashboard_management', 'techihtk_dv_themes_dashboard_management', 'localhost');
-    if ($external_db->insert('external_tickets', [
-        'user_id' => $user_id,
-        'email' => $email,
-        'description' => $description,
-        'created_at' => current_time('mysql'),
-    ])) {
-        wp_send_json_success(['message' => 'Ticket created successfully in external database.']);
-    } else {
-        wp_send_json_error(['message' => 'Failed to create ticket in external database.']);
-    }
-    wp_die();
-}
-
-
 add_action('init', 'underconstruction');
 
 function underconstruction() {
