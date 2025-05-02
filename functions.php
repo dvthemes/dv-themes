@@ -114,13 +114,11 @@ function create_dvuser_role() {    if (!get_role('dvuser')) {        $role = add
 function hide_plugins_menu_for_dvuser() {    $current_user = wp_get_current_user();    if (in_array('dvuser', (array)$current_user->roles)) {        remove_menu_page('plugins.php');     }}add_action('admin_menu', 'hide_plugins_menu_for_dvuser', 999);
 function redirect_dvuser_from_plugins_page() {    $current_user = wp_get_current_user();    if (in_array('dvuser', (array)$current_user->roles)) {        if (strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false) { wp_redirect(admin_url()); exit; }    }}add_action('admin_init', 'redirect_dvuser_from_plugins_page');
 
-
-
-
 add_action('init', function () {
     $custom_slug = 'dv-login';
-    $request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $request_uri = untrailingslashit($request_uri);
+    $request_uri = untrailingslashit(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    $custom_path = untrailingslashit(parse_url(site_url($custom_slug), PHP_URL_PATH));
+
     if (
         (strpos($request_uri, '/wp-login.php') !== false || strpos($request_uri, '/wp-admin') === 0) &&
         $_SERVER['REQUEST_METHOD'] === 'GET' &&
@@ -129,17 +127,21 @@ add_action('init', function () {
         wp_redirect(home_url());
         exit;
     }
-    if ($request_uri === '/' . $custom_slug) {
+
+    if ($request_uri === $custom_path) {
         require_once ABSPATH . 'wp-login.php';
         exit;
     }
 });
+
 add_action('init', function () {
     if (is_admin() && !is_user_logged_in() && !wp_doing_ajax()) {
         wp_redirect(home_url('/dv-login'));
         exit;
     }
 });
+
+
 
 
 
