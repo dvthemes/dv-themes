@@ -136,7 +136,48 @@
 				<h2>SEO Settings</h2>
 				<table>
 					<tbody>
-						<tr><th>Edit Robots.txt</th><td><a href="<?php echo get_site_url(); ?>/wp-admin/site-editor.php?path=%2Fwp_global_styles&canvas=edit" target="blank" class="btn" style="margin: 0;">Click Here to Edit theme Options</a> </td></td></tr>
+						<tr>
+							<th style="width: 28%; padding: 20px 0; vertical-align: top;">Meta Settings for Each Page</th>
+							<td>
+								<div class="switch-options">
+									<?php 
+										if(empty($options['metaOptions'])){
+											$metaOptions = 0; 
+										}else{
+											$metaOptions = $options['metaOptions'];  
+										}
+									?>
+									<label class="cb-enable <?php if($metaOptions == 1){ echo 'selected'; } ?>">Yes</label>
+									<label class="cb-disable <?php if($metaOptions == 0){ echo 'selected'; } ?>">No</label>
+									<input type="hidden" class="checkbox checkbox-input" id="metaOptions" name="sample_theme_options[metaOptions]" value="<?php echo $metaOptions; ?>">
+								</div>
+								<p>Allows you to set a custom meta title and description for each page and post individually.</p>
+							</td>
+						</tr>
+						<tr>
+							<th style="width: 28%; padding: 20px 0; vertical-align: top;">Google Search Console</th>
+							<td>
+								<input id="sample_theme_options[console_meta]" type="text" name="sample_theme_options[console_meta]" value="<?php if(!empty($options['console_meta'])){ esc_attr_e( $options['console_meta'] ); } ?>" />
+								<p>Enter your Google Search Console verification HTML code or ID.</p>
+								<code>&lt;meta name="google-site-verification" content="your-id" /&gt;</code>
+							</td>
+						</tr>
+						<tr>
+							<th style="width: 28%; padding: 20px 0; vertical-align: top;">Header Code Injection</th>
+							<td>
+								<textarea id="sample_theme_options[head_script]" class="large-text" name="sample_theme_options[head_script]"><?php if(!empty($options['head_script'])){ echo esc_textarea( $options['head_script'] ); } ?></textarea>
+								<p>Insert the code within the <code>&lt;head/&gt;</code> section of the HTML document.</p>
+							</td>
+						</tr>
+						<tr>
+							<th style="width: 28%; padding: 20px 0; vertical-align: top;">Body Code Injection</th>
+							<td>
+								<textarea id="sample_theme_options[body_script]" class="large-text" name="sample_theme_options[body_script]"><?php if(!empty($options['body_script'])){ echo esc_textarea( $options['body_script'] ); } ?></textarea>
+								<p>Insert the code within the <code>&lt;body&gt;</code> section of the HTML document.</p>
+							</td>
+						</tr>
+
+						<tr><th>Edit Robots.txt</th><td><a href="<?php echo get_site_url(); ?>/wp-admin/options-general.php?page=custom-robots-editor" target="blank" class="btn" style="margin: 0;">Click Here to Edit theme Options</a> </td></tr>
 					</tbody>
 				</table> 
 			</div>

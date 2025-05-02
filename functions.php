@@ -117,3 +117,78 @@ function redirect_dvuser_from_plugins_page() {    $current_user = wp_get_current
 
 
 
+add_action('init', function () {
+    $custom_slug = 'dv-login';
+    $request_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $request_uri = untrailingslashit($request_uri);
+    if (
+        (strpos($request_uri, '/wp-login.php') !== false || strpos($request_uri, '/wp-admin') === 0) &&
+        $_SERVER['REQUEST_METHOD'] === 'GET' &&
+        !is_user_logged_in()
+    ) {
+        wp_redirect(home_url());
+        exit;
+    }
+    if ($request_uri === '/' . $custom_slug) {
+        require_once ABSPATH . 'wp-login.php';
+        exit;
+    }
+});
+add_action('init', function () {
+    if (is_admin() && !is_user_logged_in() && !wp_doing_ajax()) {
+        wp_redirect(home_url('/dv-login'));
+        exit;
+    }
+});
+
+
+
+// for individual page meta values
+add_action('wp_head', 'custom_dynamic_seo_tags', 1); 
+function custom_dynamic_seo_tags() {
+    if (is_singular(array('post', 'page'))) {
+        global $post;
+        $seo_description = get_post_meta($post->ID, '_seo_description_key', true);
+        $seo_canonical   = get_post_meta($post->ID, '_seo_canonical_key', true);
+        if (!empty($seo_description)) {
+            echo '<meta name="description" content="' . esc_attr($seo_description) . '">' . "\n";
+        }
+        if (!empty($seo_canonical)) {
+            echo '<link rel="canonical" href="' . esc_url($seo_canonical) . '">' . "\n";
+        }
+    }
+}
+add_filter('document_title_parts', 'custom_override_seo_title');
+function custom_override_seo_title($title) {
+    if (is_singular(['post', 'page'])) {
+        global $post;
+        $seo_title = get_post_meta($post->ID, '_seo_title_key', true);
+
+        if (!empty($seo_title)) {
+            $title['title'] = $seo_title;
+        }
+    }
+    return $title;
+}
+
+// for the whole site 
+
+add_action('wp_head', function () {
+    $options = get_option('sample_theme_options');
+    if (!empty($options['console_meta'])) {
+        echo '<meta name="google-site-verification" content="' . esc_attr($options['console_meta']) . '">' . "\n";
+    }
+    if (!empty($options['head_script'])) {
+        echo $options['head_script'] . "\n";
+    }
+}, 1);
+
+add_action('wp_body_open', function () {
+    $options = get_option('sample_theme_options');
+
+    if (!empty($options['body_script'])) {
+        echo $options['body_script'] . "\n";
+    }
+});
+
+

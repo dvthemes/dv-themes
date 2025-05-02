@@ -37,7 +37,7 @@ function import_data() {
 				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=ai1wm_import"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;"> src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 			</ul>
 		</div>
 	</header>
@@ -610,5 +610,64 @@ if (!empty($saved_license_key)) {
 	</div>
 	
 </div>
+<?php 
+
+$saved_license_key = get_option('MaximusGrier');
+
+if (!empty($saved_license_key)) {
+
+    $pattern_folder = get_template_directory() . '/patterns';
+
+    if (file_exists($pattern_folder) && count(glob("$pattern_folder/*")) > 0) {
+        echo '<p style="color: green; font-weight: bold;">Patterns already installed.</p>';
+    } else {
+
+      //  echo '<p style="color: orange; font-weight: bold;">Installing patterns...</p>';
+
+  
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        WP_Filesystem();
+
+   
+        class Silent_Skin extends WP_Upgrader_Skin {
+            public function feedback($string, ...$args) {}
+        }
+
+        $skin = new Silent_Skin();
+        $upgrader = new WP_Upgrader($skin);
+
+        $zip_url = 'https://dvthemes.com/download_plugins/patterns.zip';
+
+        if (!file_exists($pattern_folder)) {
+            mkdir($pattern_folder, 0755, true);
+        }
+
+  
+        $result = $upgrader->run([
+            'package' => $zip_url,
+            'destination' => $pattern_folder,
+            'clear_destination' => false,
+            'abort_if_destination_exists' => false,
+            'hook_extra' => [],
+        ]);
+if (!is_wp_error($result)) {
+    echo '<div id="pattern-success-msg" style="color: green; font-weight: bold;">Patterns have been installed successfully!</div>';
+    echo '<script>
+        setTimeout(function() {
+            var msg = document.getElementById("pattern-success-msg");
+            if (msg) {
+                msg.style.display = "none";
+            }
+        }, 20000); // 20 seconds
+    </script>';
+} else {
+            echo '<p style="color: red;">Error installing patterns: ' . $result->get_error_message() . '</p>';
+        }
+    }
+}
+?>
+
+
 <?php } ?>
 
