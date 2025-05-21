@@ -48,33 +48,33 @@ function import_data() {
 
 <div class="theme_option">
 
-	
+    
 
-	<header class="dashboard-head">
+    <header class="dashboard-head">
 
-		<div class="menu-wrapper">
+        <div class="menu-wrapper">
 
-			<ul class="dashboard-menu">
+            <ul class="dashboard-menu">
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+                <li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 
-			</ul>
+            </ul>
 
-		</div>
+        </div>
 
-	</header>
+    </header>
   <?php 
 $saved_license_key = get_option('MaximusGrier');
 
@@ -113,8 +113,8 @@ if (empty($saved_license_key)) {
 }
 ?>
 
-	
-	
+    
+    
 
 </div>
 
@@ -516,7 +516,7 @@ $upgrader->run([
 
 
 
-  		die;
+        die;
 
 
 
@@ -534,33 +534,33 @@ function dv_options() {
 
 <div class="theme_option">
 
-	
+    
 
-	<header class="dashboard-head">
+    <header class="dashboard-head">
 
-		<div class="menu-wrapper">
+        <div class="menu-wrapper">
 
-			<ul class="dashboard-menu">
+            <ul class="dashboard-menu">
 
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+                <li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 
-			</ul>
+            </ul>
 
-		</div>
+        </div>
 
-	</header>
+    </header>
      <?php 
 $saved_license_key = get_option('MaximusGrier');
 
@@ -641,7 +641,7 @@ if (is_wp_error($response)) {
 
 
 
-	
+    
 
 </div>
 
@@ -657,33 +657,33 @@ function pre_built_websites() {
 
 <div class="theme_option">
 
-	
+    
 
-	<header class="dashboard-head">
+    <header class="dashboard-head">
 
-		<div class="menu-wrapper">
+        <div class="menu-wrapper">
 
-			<ul class="dashboard-menu">
+            <ul class="dashboard-menu">
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
 
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+                <li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 
-			</ul>
+            </ul>
 
-		</div>
+        </div>
 
-	</header>
+    </header>
 
      <?php 
 $saved_license_key = get_option('MaximusGrier');
@@ -694,7 +694,7 @@ if (empty($saved_license_key)) {
 ?>
 
 
-	<?php
+    <?php
 
 $api_url_pre_built = 'https://dvthemes.com/backend/dv-themes-dashboard/pre_built_api.php';
 
@@ -724,65 +724,65 @@ if (is_wp_error($built_response)) {
 
 
 
-	<div class="tabPanel">
+    <div class="tabPanel">
 
-		<div id="skins" class="cstmTab" style="display:block;">
+        <div id="skins" class="cstmTab" style="display:block;">
 
-			<h2>Pre-built Websites</h2>
+            <h2>Pre-built Websites</h2>
 
-			<div class="items">
+            <div class="items">
 
-				 <?php if (!empty($built_uploaded_data) && is_array($built_uploaded_data)): ?>
+                 <?php if (!empty($built_uploaded_data) && is_array($built_uploaded_data)): ?>
 
-				<?php foreach ($built_uploaded_data as $built_uploaded_datas): ?>
+                <?php foreach ($built_uploaded_data as $built_uploaded_datas): ?>
 
-					<?php
+                    <?php
 
-						$title = $built_uploaded_datas['title'] ?? '';
+                        $title = $built_uploaded_datas['title'] ?? '';
 
-						$web_link = $built_uploaded_datas['web_link'] ?? '#';
+                        $web_link = $built_uploaded_datas['web_link'] ?? '#';
 
-						$thumbnail = $built_uploaded_datas['thumbnail'] ?? '';
+                        $thumbnail = $built_uploaded_datas['thumbnail'] ?? '';
 
-					?>
+                    ?>
 
-					<div class="item skin wordpress">
+                    <div class="item skin wordpress">
 
-						<a href="<?php echo htmlspecialchars($web_link); ?>" target="_blank">
+                        <a href="<?php echo htmlspecialchars($web_link); ?>" target="_blank">
 
-							<div class="shadow">
+                            <div class="shadow">
 
-								<p class="image">
+                                <p class="image">
 
-									<img src="<?php echo htmlspecialchars($thumbnail); ?>" alt="<?php echo htmlspecialchars($title); ?>">
+                                    <img src="<?php echo htmlspecialchars($thumbnail); ?>" alt="<?php echo htmlspecialchars($title); ?>">
 
-								</p>
+                                </p>
 
-							</div>
+                            </div>
 
-							<span><?php echo htmlspecialchars($title); ?></span>
+                            <span><?php echo htmlspecialchars($title); ?></span>
 
-						</a>
+                        </a>
 
-					</div>
+                    </div>
 
-				<?php endforeach; ?>
+                <?php endforeach; ?>
 
-			<?php endif; ?>
+            <?php endif; ?>
 
-			
+            
 
-			</div>
+            </div>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
-	
+    
 
 </div>
 
-	
+    
 
 <?php } 
 
@@ -790,7 +790,7 @@ if (is_wp_error($built_response)) {
 
 function theme_r_options() {
 
-	require get_template_directory() . '/dv-builder/theme-options/custom-option.php';	
+    require get_template_directory() . '/dv-builder/theme-options/custom-option.php';   
 
 } 
 
@@ -800,7 +800,7 @@ function theme_r_options() {
 
 function maintenance_mode() {
 
-	global $select_options; if ( ! isset( $_REQUEST['settings-updated'] ) ) $_REQUEST['settings-updated'] = false; 
+    global $select_options; if ( ! isset( $_REQUEST['settings-updated'] ) ) $_REQUEST['settings-updated'] = false; 
 
 ?>
 
@@ -810,68 +810,68 @@ function maintenance_mode() {
 
 <div class="theme_option">
 
-	<header class="dashboard-head">
+    <header class="dashboard-head">
 
-		<div class="menu-wrapper">
+        <div class="menu-wrapper">
 
-			<ul class="dashboard-menu">
+            <ul class="dashboard-menu">
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
 
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+                <li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 
-			</ul>
+            </ul>
 
-		</div>
+        </div>
 
-	</header>
+    </header>
 
 
  
 
-	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
+    <?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
 
-		<div class="saved_alert">
+        <div class="saved_alert">
 
-			<strong><?php _e( 'Options saved', 'customtheme' ); ?></strong>
+            <strong><?php _e( 'Options saved', 'customtheme' ); ?></strong>
 
-		</div>
+        </div>
 
-	<?php endif; ?> 
+    <?php endif; ?> 
 
 
 
-	<form method="post" action="options.php">
+    <form method="post" action="options.php">
 
-		<?php 
+        <?php 
 
-			settings_fields( 'sample_options' ); $options = get_option( 'sample_theme_options' ); 
+            settings_fields( 'sample_options' ); $options = get_option( 'sample_theme_options' ); 
 
-			if(function_exists( 'wp_enqueue_media' )){
+            if(function_exists( 'wp_enqueue_media' )){
 
-				wp_enqueue_media();
+                wp_enqueue_media();
 
-			}else{
+            }else{
 
-				wp_enqueue_style('thickbox');
+                wp_enqueue_style('thickbox');
 
-				wp_enqueue_script('media-upload');
+                wp_enqueue_script('media-upload');
 
-				wp_enqueue_script('thickbox');
+                wp_enqueue_script('thickbox');
 
-			}
+            }
 
-		?>
+        ?>
 
          <?php 
 $saved_license_key = get_option('MaximusGrier');
@@ -1067,37 +1067,37 @@ if (empty($saved_license_key)) {
 </div>
 <?php } ?>
 
-		
+        
 
 
 
 <script>
 
-	jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
 
-		jQuery('.switch-options label.cb-enable').click(function(){
+        jQuery('.switch-options label.cb-enable').click(function(){
 
-			jQuery(this).closest('.switch-options').find('label').removeClass('selected');
+            jQuery(this).closest('.switch-options').find('label').removeClass('selected');
 
-			jQuery(this).addClass('selected'); 
+            jQuery(this).addClass('selected'); 
 
-			jQuery(this).closest('.switch-options').find('.checkbox').val(1);
+            jQuery(this).closest('.switch-options').find('.checkbox').val(1);
 
-		});
+        });
 
-		jQuery('.switch-options label.cb-disable').click(function(){
+        jQuery('.switch-options label.cb-disable').click(function(){
 
-			jQuery(this).closest('.switch-options').find('label').removeClass('selected');
+            jQuery(this).closest('.switch-options').find('label').removeClass('selected');
 
-			jQuery(this).addClass('selected'); 
+            jQuery(this).addClass('selected'); 
 
-			jQuery(this).closest('.switch-options').find('.checkbox').val(0);
+            jQuery(this).closest('.switch-options').find('.checkbox').val(0);
 
-		});
+        });
 
 
 
-		jQuery('.tabPanel .cstmTab:first').show();
+        jQuery('.tabPanel .cstmTab:first').show();
 
 
 
@@ -1125,7 +1125,7 @@ if (empty($saved_license_key)) {
 
         });
 
-		
+        
 
     });
 
@@ -1211,35 +1211,35 @@ function manual_support() {
 
 <div class="theme_option">
 
-	
+    
 
-	<header class="dashboard-head">
+    <header class="dashboard-head">
 
-		<div class="menu-wrapper">
+        <div class="menu-wrapper">
 
-			<ul class="dashboard-menu">
+            <ul class="dashboard-menu">
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+                <li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 
-			</ul>
+            </ul>
 
-		</div>
+        </div>
 
-	</header>
+    </header>
 
-	 <?php 
+     <?php 
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
@@ -1247,79 +1247,79 @@ if (empty($saved_license_key)) {
 }
 ?>
 
-	<div class="tabPanel">
+    <div class="tabPanel">
 
-		<div id="general_options" class="cstmTab" style="display:block;">
+        <div id="general_options" class="cstmTab" style="display:block;">
 
-			<h2>Support</h2>
+            <h2>Support</h2>
 
-			<div class="card-content cnt_clrd">
+            <div class="card-content cnt_clrd">
 
-				<div class="card-box">
+                <div class="card-box">
 
-					<div class="support-item" style="border-right: 1px solid rgba(48, 64, 80, .1);">
+                    <div class="support-item" style="border-right: 1px solid rgba(48, 64, 80, .1);">
 
-						<img src="https://dvthemes.com/assets/theme-images/icons/yes-icon.svg" />
+                        <img src="https://dvthemes.com/assets/theme-images/icons/yes-icon.svg" />
 
-						<h5>Item support <span class="include">includes</span>: </h5>
+                        <h5>Item support <span class="include">includes</span>: </h5>
 
-						<p>Responding to questions or problems regarding the item and its features.</p>
+                        <p>Responding to questions or problems regarding the item and its features.</p>
 
-						<p>Fixing bugs and reported issues.</p>
+                        <p>Fixing bugs and reported issues.</p>
 
-						<p>Providing updates to ensure compatibility with new WordPress versions.</p>
+                        <p>Providing updates to ensure compatibility with new WordPress versions.</p>
 
-					</div>
+                    </div>
 
-					<div class="support-item">
+                    <div class="support-item">
 
-						<img src="https://dvthemes.com/assets/theme-images/icons/no-icon.svg" />
+                        <img src="https://dvthemes.com/assets/theme-images/icons/no-icon.svg" />
 
-						<h5>Item support does <span class="include">not include</span>: </h5>
+                        <h5>Item support does <span class="include">not include</span>: </h5>
 
-						<p>Customization and installation services.</p>
+                        <p>Customization and installation services.</p>
 
-						<p>Support for third party software and plugins.</p>
+                        <p>Support for third party software and plugins.</p>
 
-					</div>
+                    </div>
 
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-			
+            
 
-			<div class="card-content blue_box">
+            <div class="card-content blue_box">
 
-				<div class="cnt_f">
+                <div class="cnt_f">
 
-					<h3>Can't find <br> what you need? </h3>
+                    <h3>Can't find <br> what you need? </h3>
 
-					<p>Submit a ticket and get help.</p>
+                    <p>Submit a ticket and get help.</p>
 
-					<a target="_blank" href="https://dvthemes.com/dv_themes_user_dashboard/login_form.php" class="btn">Create a ticket</a>
+                    <a target="_blank" href="https://dvthemes.com/dv_themes_user_dashboard/login_form.php" class="btn">Create a ticket</a>
 
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-			<!-- <form id="createTicketForm" style="display: none;">
+            <!-- <form id="createTicketForm" style="display: none;">
 
-				<label for="ticketDescription">Describe your Query:</label><br>
+                <label for="ticketDescription">Describe your Query:</label><br>
 
-				<textarea id="ticketDescription" name="ticketDescription" rows="4" cols="50" required></textarea><br><br>
+                <textarea id="ticketDescription" name="ticketDescription" rows="4" cols="50" required></textarea><br><br>
 
-				<button type="submit" class="btn">Submit Ticket</button>
+                <button type="submit" class="btn">Submit Ticket</button>
 
-			</form> -->
+            </form> -->
 
-			
+            
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
-	
+    
 
 </div>
 
@@ -1419,41 +1419,41 @@ function license_key() {
 
 <div class="theme_option">
 
-	
+    
 
-	<header class="dashboard-head">
+    <header class="dashboard-head">
 
-		<div class="menu-wrapper">
+        <div class="menu-wrapper">
 
-			<ul class="dashboard-menu">
+            <ul class="dashboard-menu">
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-options"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/dashboard-icon.svg" /></span>Dashboard</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=pre-built-websites"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/websites-icon.svg" /></span>Pre-built Websites</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=theme-settings"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/theme-options-icon.svg" /></span>Theme Options</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=maintenance-mode"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/maintenance-icon.svg" /></span>Maintenance Mode</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=import_data"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Import Data</a></li>
 
-				<li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
+                <li><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=manual-support"><span class="mfn-icon"><img src="https://dvthemes.com/assets/theme-images/icons/support-icon.svg" /></span>Support</a></li>
 
-				<li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
+                <li class="active"><a href="<?php echo get_site_url(); ?>/wp-admin/admin.php?page=license-key"><span class="mfn-icon"><img style="width: 100%;" src="https://dvthemes.com/assets/theme-images/icons/key-icon.svg" /></span>License Key</a></li>
 
-			</ul>
+            </ul>
 
-		</div>
+        </div>
 
-	</header>
+    </header>
 
-	
+    
 
-	<div class="tabPanel">
+    <div class="tabPanel">
 
-		<div id="general_options" class="cstmTab" style="display:block;">
+        <div id="general_options" class="cstmTab" style="display:block;">
 
-			<h2>License Key</h2>
+            <h2>License Key</h2>
 
 <?php
 
@@ -1565,11 +1565,11 @@ if (!empty($saved_license_key)) {
 
 </form>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
-	
+    
 
 </div>
 
@@ -1684,14 +1684,5 @@ if (!is_wp_error($result)) {
     }
 
 }
-
+}
 ?>
-
-
-
-
-
-<?php } ?>
-
-
-
