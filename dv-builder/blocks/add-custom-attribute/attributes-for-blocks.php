@@ -199,7 +199,11 @@ function custom_render_block($block_content, $block) {
 	if(in_array($block['blockName'], $not_supported, true)) {
 		return $block_content;
 	}
-
+	
+	if (!isset($block['attrs']) || !is_array($block['attrs'])) {
+        return $block_content;
+    }
+	
 	if(!custom_has_attributes($block['attrs'])) {
 		return $block_content;
 	}
