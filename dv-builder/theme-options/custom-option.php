@@ -5,9 +5,6 @@
 <link rel='stylesheet' href='<?php echo get_template_directory_uri() . '/dv-builder/assets/css/preloader.css'; ?>' />
 
 <div class="theme_option">
-
-	
-
 	<header class="dashboard-head">
 		
 		<div class="menu-wrapper">
@@ -79,7 +76,7 @@
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
-    echo '<div style="color: red; font-weight: bold; margin: 10px 0;">ACTIVATE YOUR LICENSE KEY FIRST</div>';
+    echo '<div class="dv_error">ACTIVATE YOUR LICENSE KEY FIRST</div>';
 }else{
 ?>
 		<div class="tabPanel">

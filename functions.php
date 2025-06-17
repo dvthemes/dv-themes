@@ -445,3 +445,80 @@ add_action('wp_body_open', function () {
 
 });
 
+
+add_action('admin_enqueue_scripts', 'dv_enqueue_ajax_script');
+function dv_enqueue_ajax_script() {
+    wp_enqueue_script('dv-plugin-installer', get_stylesheet_directory_uri() . '/plugin-installer.js', ['jquery'], null, true);
+    wp_localize_script('dv-plugin-installer', 'dv_ajax_object', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('dv_plugin_nonce'),
+    ]);
+}
+
+
+add_action('wp_ajax_dv_install_activate_plugin', 'dv_install_activate_plugin');
+function dv_install_activate_plugin() {
+    check_ajax_referer('dv_plugin_nonce', 'security');
+
+    if (!current_user_can('install_plugins')) {
+        wp_send_json_error('Unauthorized');
+    }
+
+    $plugin_slug = sanitize_text_field($_POST['plugin_slug'] ?? '');
+
+    $plugin_urls = [
+        'dv-builder' => 'https://dvthemes.com/download_plugins/dv-builder.zip',
+        'contact-form' => 'https://dvthemes.com/download_plugins/contact-form.zip',
+    ];
+
+    if (!isset($plugin_urls[$plugin_slug])) {
+        wp_send_json_error('Invalid plugin slug');
+    }
+
+    require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+    require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+
+    if (!class_exists('Silent_Upgrader_Skin')) {
+        class Silent_Upgrader_Skin extends WP_Upgrader_Skin {
+            public function header() {}
+            public function footer() {}
+            public function feedback($string, ...$args) {}
+        }
+    }
+
+    $before_plugins = array_keys(get_plugins());
+    $upgrader = new Plugin_Upgrader(new Silent_Upgrader_Skin());
+    $result = $upgrader->install($plugin_urls[$plugin_slug]);
+
+    if (is_wp_error($result)) {
+        wp_send_json_error('Installation failed: ' . $result->get_error_message());
+    }
+
+    wp_clean_plugins_cache();
+    $after_plugins = get_plugins();
+    $after_plugin_keys = array_keys($after_plugins);
+    $new_plugins = array_diff($after_plugin_keys, $before_plugins);
+
+    foreach ($new_plugins as $plugin_file) {
+        $activation = activate_plugin($plugin_file);
+        if (is_wp_error($activation)) {
+            wp_send_json_error('Activation error: ' . $activation->get_error_message());
+        } else {
+            wp_send_json_success('Plugin activated: ' . $plugin_file);
+        }
+    }
+
+    foreach ($after_plugins as $plugin_file => $plugin_data) {
+        if (strpos($plugin_file, $plugin_slug) !== false) {
+            $activation = activate_plugin($plugin_file);
+            if (is_wp_error($activation)) {
+                wp_send_json_error('Activation error (fallback): ' . $activation->get_error_message());
+            } else {
+                wp_send_json_success('Plugin activated (fallback): ' . $plugin_file);
+            }
+        }
+    }
+
+    wp_send_json_error('Plugin installed, but activation failed.');
+}

@@ -79,42 +79,86 @@ function import_data() {
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
-    echo '<div style="color: red; font-weight: bold; margin: 10px 0;">ACTIVATE YOUR LICENSE KEY FIRST</div>';
+    echo '<div class="dv_error">ACTIVATE YOUR LICENSE KEY FIRST</div>';
 }else{ ?> 
     <div class="tabPanel">
-
         <div id="general_options" class="cstmTab" style="display:block;">
-
             <h2>Import Data</h2>
-
-        <form id="dv-import-form" enctype="multipart/form-data">
-
-            <input type="file" name="import_file" id="import_file" required />
-
-            <input type="submit" class="button button-primary" value="Start Import">
-
-        </form>
-
-       <div id="import-loader" style="display:none; margin-top:10px;">
-
-    
-
-        <span>Importing, please wait...</span>
-
-        </div>
-
-        <div id="import-result" style="margin-top:20px;"></div>
-
-        </div>
-
-    </div>
 <?php 
+	$plugin_map = [
+    'dv-builder'              => 'getwid/getwid.php',
+    'contact-form'    => 'contact-form-7/wp-contact-form-7.php',
+];
+?>		
+	<div id="plugins_rcmnd" class="card-content cnt_clrd">
+    <h3>Plugin Recommendation!</h3>
+    <table class="form-table">
+        <tbody>
+            <?php
+            foreach ($plugin_map as $slug => $plugin_file) {
+                $is_active = is_plugin_active($plugin_file);
+                $label = $is_active ? 'Activated' : 'Install';
+                $disabled = $is_active ? 'disabled' : '';
+                echo '<tr valign="top" class="brder_bot">';
+                echo '<th><h4>' . esc_html(str_replace(['-', '.zip'], [' ', ''], $slug)) . '</h4></th>';
+                echo '<td><button class="dv-install-btn button" data-slug="' . esc_attr($slug) . '" ' . $disabled . '>' . $label . '</button></td>';
+                echo '</tr>';
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
-}
-?>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+    $('.dv-install-btn').on('click', function (e) {
+        e.preventDefault();
+        var button = $(this);
+        var slug = button.data('slug');
+        button.text('Installing...').prop('disabled', true);
 
-    
-    
+        $.ajax({
+            type: 'POST',
+            url: dv_ajax_object.ajax_url,
+            data: {
+                action: 'dv_install_activate_plugin',
+                plugin_slug: slug,
+                security: dv_ajax_object.nonce
+            },
+            success: function (response) {
+                if (response.success) {
+                    button.text('Activated');
+                } else {
+                    button.text('Failed');
+                    alert(response.data);
+                }
+            },
+            error: function () {
+                button.text('Failed');
+                alert('AJAX error.');
+            }
+        });
+    });
+});
+</script>
+			
+			<div id="license_key" class="card-content cnt_clrd">
+				<h3>Upload Demo File</h3>
+				<form id="dv-import-form" enctype="multipart/form-data">
+					<div class="card-box">
+						<input type="file" name="import_file" id="import_file" required />
+						<input type="submit" class="button button-primary btn" value="Start Import">
+					</div>
+				</form>
+				<div id="import-loader" style="display:none; margin-top:10px;">
+					<span>Importing, please wait...</span>
+				</div>
+				
+				<div id="import-result" style="margin-top:20px;"></div>
+			</div>
+		</div>
+    </div>
+<?php } ?>
 
 </div>
 
@@ -565,7 +609,7 @@ function dv_options() {
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
-    echo '<div style="color: red; font-weight: bold; margin: 10px 0;">ACTIVATE YOUR LICENSE KEY FIRST</div>';
+    echo '<div class="dv_error">ACTIVATE YOUR LICENSE KEY FIRST</div>';
 }
 ?>
 
@@ -689,7 +733,7 @@ function pre_built_websites() {
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
-    echo '<div style="color: red; font-weight: bold; margin: 10px 0;">ACTIVATE YOUR LICENSE KEY FIRST</div>';
+    echo '<div class="dv_error">ACTIVATE YOUR LICENSE KEY FIRST</div>';
 }
 ?>
 
@@ -877,7 +921,7 @@ function maintenance_mode() {
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
-    echo '<div style="color: red; font-weight: bold; margin: 10px 0;">ACTIVATE YOUR LICENSE KEY FIRST</div>';
+    echo '<div class="dv_error">ACTIVATE YOUR LICENSE KEY FIRST</div>';
 }else{ ?> 
 
     <div class="tabPanel">
@@ -1243,7 +1287,7 @@ function manual_support() {
 $saved_license_key = get_option('MaximusGrier');
 
 if (empty($saved_license_key)) {
-    echo '<div style="color: red; font-weight: bold; margin: 10px 0;">ACTIVATE YOUR LICENSE KEY FIRST</div>';
+    echo '<div class="dv_error">ACTIVATE YOUR LICENSE KEY FIRST</div>';
 }
 ?>
 
@@ -1450,196 +1494,79 @@ function license_key() {
     
 
     <div class="tabPanel">
-
         <div id="general_options" class="cstmTab" style="display:block;">
-
             <h2>License Key</h2>
 
-<?php
+			<?php
+			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_license_key'])) {
+				$license_key = sanitize_text_field($_POST['license_keyword']);
+				$response = wp_remote_post('https://dvthemes.com/backend/dv-themes-dashboard/license_api.php', [
+					'method' => 'POST',
+					'body' => [
+						'license_keyword' => $license_key,
+					],
+				]);
+				if (is_wp_error($response)) {
+					echo '<p class="dv_error">Error: Unable to connect to the server.</p>';
+				} else {
+					$response_body = wp_remote_retrieve_body($response);
+					$response_data = json_decode($response_body, true);
+					if ($response_data['status'] === 'success') {
+						update_option('MaximusGrier', $license_key);
+						echo '<p style="color: green;">' . esc_html($response_data['message']) . '</p>';
+					} else {
+						echo '<p style="color: red;">' . esc_html($response_data['message']) . '</p>';
+					}
+				}
+			}
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_license_key'])) {
-
-    $license_key = sanitize_text_field($_POST['license_keyword']);
-
-    $response = wp_remote_post('https://dvthemes.com/backend/dv-themes-dashboard/license_api.php', [
-
-        'method' => 'POST',
-
-        'body' => [
-
-            'license_keyword' => $license_key,
-
-        ],
-
-    ]);
-
-    if (is_wp_error($response)) {
-
-        echo '<p>Error: Unable to connect to the server.</p>';
-
-    } else {
-
-        $response_body = wp_remote_retrieve_body($response);
-
-        $response_data = json_decode($response_body, true);
-
-
-
-        if ($response_data['status'] === 'success') {
-
-        update_option('MaximusGrier', $license_key);
-
-            echo '<p style="color: green;">' . esc_html($response_data['message']) . '</p>';
-
-        } else {
-
-            echo '<p style="color: red;">' . esc_html($response_data['message']) . '</p>';
-
-        }
-
-    }
-
-}
-
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dis_license_key'])) {
-
-   
-
-    delete_option('MaximusGrier');
-
-
-
-    echo '<p style="color: red; font-weight: bold;">License key disconnected successfully.</p>';
-
-}
-
-
-
-$saved_license_key = get_option('MaximusGrier');
-
-
-
-if (!empty($saved_license_key)) {
-
-
-
-    echo '<p style="color: green; font-weight: bold;">&#x2022; Connected</p>';
-
-    echo '<form method="POST">
-
-            <button type="submit" name="dis_license_key" class="btn">Disconnect</button>
-
-          </form>';
-
-} else {
-
-   
-
-    echo '<p style="color: red; font-weight: bold;">&#x2022; Not Connected</p>';
-
-}
-
-?>
-
-<form method="post" action="">
-
-    <div class="card-content cnt_clrd">
-
-        <div class="card-box">
-
-            <label for="license_keyword">License Key:</label>
-
-            <input type="text" name="license_keyword" id="license_keyword" placeholder="Enter Correct License Key">
-
+			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dis_license_key'])) {
+				delete_option('MaximusGrier');
+				echo '<p class="dv_error">License key disconnected successfully.</p>';
+			}
+			$saved_license_key = get_option('MaximusGrier');
+			if (!empty($saved_license_key)) {
+				echo '<div id="license_key" class="card-content cnt_clrd">
+						<h3 style="color: green; font-weight: bold;">CONNECTED</h3>
+						<form method="POST">
+							<button type="submit" name="dis_license_key" class="btn">Disconnect</button>
+						  </form>
+					</div>';
+			} else {
+				?>
+				<p class="dv_error">The key is not connected!</p>
+				<form method="post" action="">
+					<div id="license_key" class="card-content cnt_clrd">
+						<div class="card-box">
+							<input type="text" name="license_keyword" id="license_keyword" placeholder="Enter Correct License Key">
+							<button type="submit" name="submit_license_key" class="btn">Submit Key</button>
+						</div>
+					</div>
+				</form>
+				<?php } ?>
         </div>
-
     </div>
-
-    <div class="cnt_f">
-
-        <button type="submit" name="submit_license_key" class="btn">Submit Key</button>
-
-    </div>
-
-</form>
-
-        </div>
-
-    </div>
-
-    
-
 </div>
 
 <?php 
-
-
-
 $saved_license_key = get_option('MaximusGrier');
-
-
-
 if (!empty($saved_license_key)) {
-
-
-
     $pattern_folder = get_template_directory() . '/patterns';
-
-
-
     if (file_exists($pattern_folder) && count(glob("$pattern_folder/*")) > 0) {
-
-        echo '<p style="color: green; font-weight: bold;">Patterns already installed.</p>';
-
     } else {
-
-
-
-      //  echo '<p style="color: orange; font-weight: bold;">Installing patterns...</p>';
-
-
-
-  
-
         require_once ABSPATH . 'wp-admin/includes/file.php';
-
         require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
-
         WP_Filesystem();
-
-
-
-   
-
         class Silent_Skin extends WP_Upgrader_Skin {
-
             public function feedback($string, ...$args) {}
-
         }
-
-
-
         $skin = new Silent_Skin();
-
         $upgrader = new WP_Upgrader($skin);
-
-
-
         $zip_url = 'https://dvthemes.com/download_plugins/patterns.zip';
 
-
-
         if (!file_exists($pattern_folder)) {
-
             mkdir($pattern_folder, 0755, true);
-
         }
-
-
-
-  
 
         $result = $upgrader->run([
 
