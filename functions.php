@@ -1,5 +1,5 @@
 <?php
-
+/* Test */
 require get_template_directory() . '/dv-builder/dv-options.php';
 
 if ( ! function_exists( 'twentytwentyfive_post_format_setup' ) ) :	function twentytwentyfive_post_format_setup() {		add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );	}endif;add_action( 'after_setup_theme', 'twentytwentyfive_post_format_setup' );
