@@ -27,6 +27,58 @@ add_action('admin_notices', function () {
     }
 });
 
+
+
+add_action('admin_menu', 'dvbuilder_rename_getwid_menu', 999);
+function dvbuilder_rename_getwid_menu() {
+    global $menu;
+    foreach ($menu as $key => $item) {
+        if (isset($item[0]) && stripos($item[0], 'Getwid') !== false) {
+            $menu[$key][0] = str_ireplace('Getwid', 'DV Builder', $item[0]);
+        }
+    }
+}
+
+add_filter('all_plugins', 'dvbuilder_rename_getwid_plugin_title');
+function dvbuilder_rename_getwid_plugin_title($plugins) {
+    foreach ($plugins as $key => $plugin) {
+        if (stripos($plugin['Name'], 'Getwid') !== false) {
+            $plugins[$key]['Name'] = str_ireplace('Getwid', 'DV Builder', $plugin['Name']);
+        }
+    }
+    return $plugins;
+}
+
+add_filter('gettext', 'dvbuilder_replace_getwid_texts', 100, 3);
+function dvbuilder_replace_getwid_texts($translated_text, $text, $domain) {
+    if (is_admin()) {
+        $translated_text = str_ireplace('Getwid', 'DV Builder', $translated_text);
+    }
+    return $translated_text;
+}
+
+// Remove the plugin row meta (links like View Details, Support, etc.)
+add_filter('plugin_row_meta', 'dv_hide_plugin_meta_links', 10, 2);
+function dv_hide_plugin_meta_links($meta, $plugin_file) {
+    if ($plugin_file === 'getwid/getwid.php') {
+        return []; // Return empty array to hide all links
+    }
+    return $meta;
+}
+
+// Remove plugin version, author etc. from the main listing
+add_filter('all_plugins', 'dv_hide_plugin_header_info');
+function dv_hide_plugin_header_info($plugins) {
+    if (isset($plugins['getwid/getwid.php'])) {
+        $plugins['getwid/getwid.php']['Version'] = '';
+        $plugins['getwid/getwid.php']['Author'] = '';
+        $plugins['getwid/getwid.php']['AuthorURI'] = '';
+        $plugins['getwid/getwid.php']['PluginURI'] = '';
+    }
+    return $plugins;
+}
+
+
 /*=== ALLOW TO UPLOAD SVG FILES ===*/
 
 function add_file_types_to_uploads($file_types){

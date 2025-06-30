@@ -85,78 +85,113 @@ if (empty($saved_license_key)) {
         <div id="general_options" class="cstmTab" style="display:block;">
             <h2>Import Data</h2>
 <?php 
-	$plugin_map = [
+
+$stored_theme_type = get_option('MaximusGrier_theme_type');
+if($stored_theme_type=='informative_themes'){
+    $plugin_map = [
     'dv-builder'              => 'getwid/getwid.php',
     'contact-form'    => 'contact-form-7/wp-contact-form-7.php',
 ];
-?>		
-	<div id="plugins_rcmnd" class="card-content cnt_clrd">
+}elseif($stored_theme_type=='ecommerce_themes'){
+$plugin_map = [
+    'dv-builder'              => 'getwid/getwid.php',
+    'contact-form'    => 'contact-form-7/wp-contact-form-7.php',
+     'woocommerce'       => 'woocommerce/woocommerce.php',
+    'dv-wootoolkit'     => 'dv-wootoolkit/simple-variation-swatches.php',
+];
+    
+}
+
+
+?>      
+
+<div id="plugins_rcmnd" class="card-content cnt_clrd">
     <h3>Plugin Recommendation!</h3>
     <table class="form-table">
         <tbody>
             <?php
             foreach ($plugin_map as $slug => $plugin_file) {
-                $is_active = is_plugin_active($plugin_file);
-                $label = $is_active ? 'Activated' : 'Install';
-                $disabled = $is_active ? 'disabled' : '';
+                $plugin_path = WP_PLUGIN_DIR . '/' . $plugin_file;
+                $is_active = is_plugin_active($plugin_file) && file_exists($plugin_path);
+
                 echo '<tr valign="top" class="brder_bot">';
                 echo '<th><h4>' . esc_html(str_replace(['-', '.zip'], [' ', ''], $slug)) . '</h4></th>';
-                echo '<td><button class="dv-install-btn button" data-slug="' . esc_attr($slug) . '" ' . $disabled . '>' . $label . '</button></td>';
+                echo '<td>';
+                if ($is_active) {
+                    echo '<span style="color: green;">Activated</span>';
+                } elseif (file_exists($plugin_path)) {
+                    echo '<span style="color: orange;">Installed but not active</span>';
+                } else {
+                    echo '<span style="color: red;">Not Installed</span>';
+                }
+                echo '</td>';
                 echo '</tr>';
             }
             ?>
         </tbody>
     </table>
+
+    <button id="bulk-install-btn" class="button button-primary">Bulk Install & Activate</button>
 </div>
 
 <script type="text/javascript">
-    jQuery(document).ready(function ($) {
-    $('.dv-install-btn').on('click', function (e) {
+jQuery(document).ready(function ($) {
+    $('#bulk-install-btn').on('click', function (e) {
         e.preventDefault();
         var button = $(this);
-        var slug = button.data('slug');
         button.text('Installing...').prop('disabled', true);
 
         $.ajax({
             type: 'POST',
             url: dv_ajax_object.ajax_url,
             data: {
-                action: 'dv_install_activate_plugin',
-                plugin_slug: slug,
+                action: 'dv_bulk_install_activate_plugin',
+                theme_type: '<?php echo esc_js($stored_theme_type); ?>',
                 security: dv_ajax_object.nonce
             },
             success: function (response) {
                 if (response.success) {
-                    button.text('Activated');
+                    location.reload();
                 } else {
-                    button.text('Failed');
-                    alert(response.data);
+                    alert(response.data || 'Bulk installation failed.');
+                    button.text('Failed').prop('disabled', false);
                 }
             },
             error: function () {
-                button.text('Failed');
                 alert('AJAX error.');
+                button.text('Failed').prop('disabled', false);
             }
         });
     });
 });
 </script>
-			
-			<div id="license_key" class="card-content cnt_clrd">
-				<h3>Upload Demo File</h3>
-				<form id="dv-import-form" enctype="multipart/form-data">
-					<div class="card-box">
-						<input type="file" name="import_file" id="import_file" required />
-						<input type="submit" class="button button-primary btn" value="Start Import">
-					</div>
-				</form>
-				<div id="import-loader" style="display:none; margin-top:10px;">
-					<span>Importing, please wait...</span>
-				</div>
-				
-				<div id="import-result" style="margin-top:20px;"></div>
-			</div>
-		</div>
+            
+            <div id="license_key" class="card-content cnt_clrd">
+                <h3>Upload Demo File</h3>
+                <form id="dv-import-form" enctype="multipart/form-data">
+                    <div class="card-box">
+                        <input type="file" name="import_file" id="import_file" required />
+                        <input type="submit" class="button button-primary btn" id="start-import-btn" value="Start Import">
+                    </div>
+                </form>
+                <div id="import-loader" style="display:none; margin-top:10px;">
+                    <span>Importing, please wait...</span>
+                </div>
+                
+                <div id="import-result" style="margin-top:20px;"></div>
+            </div>
+
+            <script>
+jQuery(document).ready(function($) {
+    if (typeof window.dvPluginsActive !== 'undefined' && window.dvPluginsActive === false) {
+        $('#start-import-btn')
+            .prop('disabled', true)
+            .val('Required Plugins')
+            .attr('title', 'Please install and activate all required plugins.');
+    }
+});
+</script>
+        </div>
     </div>
 <?php } ?>
 
@@ -209,6 +244,22 @@ function dv_importer_handle_ajax() {
     if (!isset($_FILES['file']) || $_FILES['file']['error'] !== 0) wp_send_json_error('File upload failed.');
 
 
+    if (class_exists('WooCommerce')) {
+        $woocommerce_pages = [
+            'woocommerce_shop_page_id',
+            'woocommerce_cart_page_id',
+            'woocommerce_checkout_page_id',
+            'woocommerce_myaccount_page_id'
+        ];
+
+        foreach ($woocommerce_pages as $option_name) {
+            $page_id = get_option($option_name);
+            if ($page_id && get_post($page_id)) {
+                wp_delete_post($page_id, true); // true = force delete
+                delete_option($option_name);
+            }
+        }
+    }
 
     global $wpdb;
 
@@ -287,16 +338,41 @@ function dv_importer_handle_ajax() {
     }
 
 
+    $cart_page     = get_page_by_path('cart');
+    $checkout_page = get_page_by_path('checkout');
+    $account_page  = get_page_by_path('my-account');
 
-    
+    if ($cart_page) {
+        update_option('woocommerce_cart_page_id', $cart_page->ID);
+    }
+
+    if ($checkout_page) {
+        update_option('woocommerce_checkout_page_id', $checkout_page->ID);
+    }
+
+    if ($account_page) {
+        update_option('woocommerce_myaccount_page_id', $account_page->ID);
+    }
+
+     $page = get_page_by_title('Home');
+
+      if ($page) {
+         $page_id = $page->ID;
+   
+        update_option('show_on_front', 'page');
+        update_option('page_on_front', $page_id);
+      }
+
+
+    $folder = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME);
 
     $new_options = [
 
-        'logourl'      => 'https://websites.dvthemes.com/wp-content/uploads/2025/05/dv-logo.png',
+        'logourl'      => 'https://www.dvthemes.com/demos_logo/'.$folder.'/logo.png',
 
-        'titleOpt'     => 'DVTHEMES',
+        'titleOpt'     => 'DV THEMES',
 
-        'tagline'      => 'Fastest Prebuilt Websites',
+        'tagline'      => 'Everything You Need. All in One Place.',
 
         'preLoader'    => '0',
 
@@ -314,239 +390,128 @@ function dv_importer_handle_ajax() {
 
     update_option('sample_theme_options', $new_options);
 
-// Hardcoded update of site title and tagline
-update_option('blogname', 'DVTHEMES');
-update_option('blogdescription', 'Fastest Prebuilt Websites');
+    // Hardcoded update of site title and tagline
+    update_option('blogname', 'DV THEMES');
+    update_option('blogdescription', 'Everything You Need. All in One Place.');
+
+    
+    // Helper function to download and insert image into media library
+    function media_sideload_image_to_library($url, $filename) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+
+        $tmp = download_url($url);
+        if (is_wp_error($tmp)) {
+            return false;
+        }
+
+        $file_array = [
+            'name'     => $filename,
+            'tmp_name' => $tmp,
+        ];
+
+        // 0 means unattached post
+        $id = media_handle_sideload($file_array, 0);
+
+        if (is_wp_error($id)) {
+            @unlink($tmp);
+            return false;
+        }
+
+        return $id;
+    }
+    // Logo
+    $logo_url = 'https://www.dvthemes.com/demos_logo/'.$folder.'/logo.png';
+    $logo_id = media_sideload_image_to_library($logo_url, 'logo.png');
+    if ($logo_id) {
+        update_option('site_logo', $logo_id);
+    }
+
+    // Favicon
+    $favicon_url = 'https://www.dvthemes.com/demos_logo/'.$folder.'/favicon.png';
+    $favicon_id = media_sideload_image_to_library($favicon_url, 'favicon.png');
+    if ($favicon_id) {
+        update_option('site_icon', $favicon_id);
+    }
 
 
-// Set site logo (convert URL to attachment ID)
-$logo_url = site_url().'/wp-content/uploads/2025/05/dv-logo.png';
-$logo_id = attachment_url_to_postid($logo_url);
-if ($logo_id) {
-    update_option('site_logo', $logo_id);
-}
-
-// Set site icon (favicon)
-$favicon_url = site_url().'/wp-content/uploads/2025/05/favicon.png';
-$favicon_id = attachment_url_to_postid($favicon_url);
-if ($favicon_id) {
-    update_option('site_icon', $favicon_id);
-}
-
+ // if (get_option('permalink_structure') !== '/%postname%/') {
+ //        update_option('permalink_structure', '/%postname%/');
+ //        // Flush rewrite rules to apply changes
+ //        flush_rewrite_rules();
+ //    }
 
     // === Handle Related Assets ===
+global $wp_rewrite; 
 
-    $folder = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME);
+//Write the rule
+$wp_rewrite->set_permalink_structure('/%postname%/'); 
+
+//Set the option
+update_option( "rewrite_rules", FALSE ); 
+
+//Flush the rules and tell it to write htaccess
+$wp_rewrite->flush_rules( true );
+ 
 
     $remote_base = "https://dvthemes.com/demos_files/$folder";
 
-
-
-    // Replace style.css and theme.json in child theme
 
     require_once ABSPATH . 'wp-admin/includes/file.php';
 
     $child_theme_dir = get_stylesheet_directory();
 
 
+    require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
-    // $files = [
+    require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader-skin.php';
 
-    //     'style.css' => "$remote_base/style.css",
+    WP_Filesystem();
 
-    //     'theme.json' => "$remote_base/theme.json"
 
-    // ];
 
+    class Silent_Skin extends WP_Upgrader_Skin {
 
+        public function feedback($string, ...$args) { /* suppress output */ }
 
-    // foreach ($files as $filename => $url) {
+    }
 
-    //     $tmp = download_url($url);
+    $zip_url_main = "$remote_base/2025.zip";
 
-    //     if (!is_wp_error($tmp)) {
+    $zip_filename_main = basename($zip_url_main, '.zip'); // "2025"
 
-    //         $dest = $child_theme_dir . '/' . $filename;
+    $upload_dir = wp_upload_dir();
 
-    //         if (file_exists($dest)) unlink($dest);
+    $dest_folder_main = trailingslashit($upload_dir['basedir']) . $zip_filename_main;
 
-    //         if (copy($tmp, $dest)) {
 
-    //             $logs[] = "<span style='color:green;'>$filename updated in child theme.</span>";
 
-    //         } else {
+    if (!file_exists($dest_folder_main)) {
 
-    //             $logs[] = "<span style='color:red;'>Failed to copy $filename to child theme.</span>";
+        mkdir($dest_folder_main, 0755, true);
 
-    //         }
+    }
 
-    //         unlink($tmp);
 
-    //     } else {
 
-    //         $logs[] = "<span style='color:red;'>Error downloading $filename: " . $tmp->get_error_message() . "</span>";
+    $skin = new Silent_Skin();
 
-    //     }
+    $upgrader = new WP_Upgrader($skin);
 
-    // }
+    $upgrader->run([
 
+        'package' => $zip_url_main,
 
+        'destination' => $dest_folder_main,
 
-// Include necessary WordPress upgrade classes
+        'clear_destination' => false,
 
-require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        'abort_if_destination_exists' => false,
 
-require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader-skin.php';
+        'hook_extra' => [],
 
-WP_Filesystem();
-
-
-
-class Silent_Skin extends WP_Upgrader_Skin {
-
-    public function feedback($string, ...$args) { /* suppress output */ }
-
-}
-
-
-
-
-
-// === Download and extract 2025.zip into uploads ===
-
-$zip_url_main = "$remote_base/2025.zip";
-
-$zip_filename_main = basename($zip_url_main, '.zip'); // "2025"
-
-$upload_dir = wp_upload_dir();
-
-$dest_folder_main = trailingslashit($upload_dir['basedir']) . $zip_filename_main;
-
-
-
-if (!file_exists($dest_folder_main)) {
-
-    mkdir($dest_folder_main, 0755, true);
-
-}
-
-
-
-$skin = new Silent_Skin();
-
-$upgrader = new WP_Upgrader($skin);
-
-$upgrader->run([
-
-    'package' => $zip_url_main,
-
-    'destination' => $dest_folder_main,
-
-    'clear_destination' => false,
-
-    'abort_if_destination_exists' => false,
-
-    'hook_extra' => [],
-
-]);
-
-
-
-// === Download and extract parts.zip into child theme directory ===
-
-// $zip_url_parts = "$remote_base/parts.zip";
-
-// $zip_filename_parts = basename($zip_url_parts, '.zip'); // "parts"
-
-// $child_theme_dir = get_stylesheet_directory(); // Path to child theme
-
-// $dest_folder_parts = trailingslashit($child_theme_dir) . $zip_filename_parts;
-
-
-
-// if (!file_exists($dest_folder_parts)) {
-
-//     mkdir($dest_folder_parts, 0755, true);
-
-// }
-
-
-
-// $upgrader->run([
-
-//     'package' => $zip_url_parts,
-
-//     'destination' => $dest_folder_parts,
-
-//     'clear_destination' => false,
-
-//     'abort_if_destination_exists' => false,
-
-//     'hook_extra' => [],
-
-// ]);
-
-
-
-
-
-//font
-
-
-
-// $zip_url_font = "$remote_base/fonts.zip";
-
-// $child_theme_dir = get_stylesheet_directory();
-
-// $dest_folder_font = trailingslashit($child_theme_dir) . 'assets/fonts';
-
-
-
-// Remove the existing font directory first
-
-// if (file_exists($dest_folder_font)) {
-
-//     global $wp_filesystem;
-
-//     if (empty($wp_filesystem)) {
-
-//         require_once ABSPATH . '/wp-admin/includes/file.php';
-
-//         WP_Filesystem();
-
-//     }
-
-//     $wp_filesystem->delete($dest_folder_font, true); // true = recursive
-
-// }
-
-
-
-// Create the folder again (will be the destination for the unzip)
-
-// wp_mkdir_p($dest_folder_font);
-
-
-
-// Extract font.zip into the /assets/font/ directory
-
-// $upgrader = new WP_Upgrader();
-
-// $upgrader->run([
-
-//     'package' => $zip_url_font,
-
-//     'destination' => $dest_folder_font,
-
-//     'clear_destination' => false,
-
-//     'abort_if_destination_exists' => false,
-
-//     'hook_extra' => [],
-
-// ]);
-
-
+    ]);
 
         if (!is_wp_error($result)) {
 
@@ -558,17 +523,9 @@ $upgrader->run([
 
         }
 
-
-
         die;
 
-
-
 }
-
-
-
-
 
 function dv_options() {
 
@@ -1497,53 +1454,66 @@ function license_key() {
         <div id="general_options" class="cstmTab" style="display:block;">
             <h2>License Key</h2>
 
-			<?php
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_license_key'])) {
-				$license_key = sanitize_text_field($_POST['license_keyword']);
-				$response = wp_remote_post('https://dvthemes.com/backend/dv-themes-dashboard/license_api.php', [
-					'method' => 'POST',
-					'body' => [
-						'license_keyword' => $license_key,
-					],
-				]);
-				if (is_wp_error($response)) {
-					echo '<p class="dv_error">Error: Unable to connect to the server.</p>';
-				} else {
-					$response_body = wp_remote_retrieve_body($response);
-					$response_data = json_decode($response_body, true);
-					if ($response_data['status'] === 'success') {
-						update_option('MaximusGrier', $license_key);
-						echo '<p style="color: green;">' . esc_html($response_data['message']) . '</p>';
-					} else {
-						echo '<p style="color: red;">' . esc_html($response_data['message']) . '</p>';
-					}
-				}
-			}
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_license_key'])) {
 
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dis_license_key'])) {
-				delete_option('MaximusGrier');
-				echo '<p class="dv_error">License key disconnected successfully.</p>';
-			}
-			$saved_license_key = get_option('MaximusGrier');
-			if (!empty($saved_license_key)) {
-				echo '<div id="license_key" class="card-content cnt_clrd">
-						<h3 style="color: green; font-weight: bold;">CONNECTED</h3>
-						<form method="POST">
-							<button type="submit" name="dis_license_key" class="btn">Disconnect</button>
-						  </form>
-					</div>';
-			} else {
-				?>
-				<p class="dv_error">The key is not connected!</p>
-				<form method="post" action="">
-					<div id="license_key" class="card-content cnt_clrd">
-						<div class="card-box">
-							<input type="text" name="license_keyword" id="license_keyword" placeholder="Enter Correct License Key">
-							<button type="submit" name="submit_license_key" class="btn">Submit Key</button>
-						</div>
-					</div>
-				</form>
-				<?php } ?>
+                $license_key = sanitize_text_field($_POST['license_keyword']);
+            
+                $response = wp_remote_post('https://dvthemes.com/backend/dv-themes-dashboard/license_api.php', [
+                    'method' => 'POST',
+                    'body'   => [
+                        'license_keyword' => $license_key,
+                    ],
+                ]);
+            
+                if (is_wp_error($response)) {
+                    echo '<p>Error: Unable to connect to the server.</p>';
+                } else {
+                    $response_body = wp_remote_retrieve_body($response);
+                    $response_data = json_decode($response_body, true);
+            
+                    if ($response_data['status'] === 'success') {
+                        update_option('MaximusGrier', $license_key);
+            
+                        // Optional: Save theme_type in WP options as well
+                        if (isset($response_data['theme_type'])) {
+                            update_option('MaximusGrier_theme_type', sanitize_text_field($response_data['theme_type']));
+                        }
+            
+                        echo '<p style="color: green;">' . esc_html($response_data['message']) . '</p>';
+            
+                        // Display the theme type
+                        echo '<p>Theme Type: <strong>' . esc_html($response_data['theme_type']) . '</strong></p>';
+                    } else {
+                        echo '<p style="color: red;">' . esc_html($response_data['message']) . '</p>';
+                    }
+                }
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['dis_license_key'])) {
+                delete_option('MaximusGrier');
+                echo '<p class="dv_error">License key disconnected successfully.</p>';
+            }
+            $saved_license_key = get_option('MaximusGrier');
+            if (!empty($saved_license_key)) {
+                echo '<div id="license_key" class="card-content cnt_clrd">
+                        <h3 style="color: green; font-weight: bold;">CONNECTED</h3>
+                        <form method="POST">
+                            <button type="submit" name="dis_license_key" class="btn">Disconnect</button>
+                          </form>
+                    </div>';
+            } else {
+                ?>
+                <p class="dv_error">The key is not connected!</p>
+                <form method="post" action="">
+                    <div id="license_key" class="card-content cnt_clrd">
+                        <div class="card-box">
+                            <input type="text" name="license_keyword" id="license_keyword" placeholder="Enter Correct License Key">
+                            <button type="submit" name="submit_license_key" class="btn">Submit Key</button>
+                        </div>
+                    </div>
+                </form>
+                <?php } ?>
         </div>
     </div>
 </div>
